@@ -63,6 +63,7 @@ button, input, select, textarea {
 
 textarea {
     height: 200px;
+    resize: none;
 }
 
 p, ul, ol, dl, table, .features {
