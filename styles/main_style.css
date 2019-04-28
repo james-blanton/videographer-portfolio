@@ -1,0 +1,736 @@
+/* ////////////////////////////////////////////////////////////////////
+
+THEME NAME: James Blanton Portfolio Website v7
+DESCRIPTION: The primary stylesheet for the 7th version of my portfolio.
+AUTHOR: James Blanton
+AUTHOR URI: https://james-blanton.com
+
+RECENT CHANGES:;
+#content -> .container_outerContent
+#small_content -> .container_innerContent
+#vid_link -> .video_additionalInfo_link
+
+////////////////////////////////////////////////////////////////////*/
+
+/* main style */
+
+
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+body { 
+    background: #F1F1F1;
+    color: #222222;
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.5;
+    position: relative;
+    cursor: default;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.4em;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
+}
+
+a {
+    color: #040404;
+    text-decoration: none;
+}
+
+a.italic {
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+
+a:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
+button, input, select, textarea {
+    margin: 0;
+}
+
+textarea {
+    height: 200px;
+}
+
+p, ul, ol, dl, table, .features {
+    margin-bottom: 1.5em;
+}
+
+ol, ul {
+    list-style: none;
+    list-style-type: none;
+}
+
+ul, menu, dir {
+    display: block;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+select {
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px;
+    background:#FBFBFB none repeat scroll 0 0;
+    border:1px solid #E5E5E5;
+    font-size:12px;
+    line-height: 16px;
+    margin-bottom:16px;
+    margin-right:6px;
+    margin-top:2px;
+    padding:10px;
+    display: inline-block;
+}
+
+input:focus { 
+  outline: 1px solid #5555;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.uppercase{
+    text-transform: uppercase;
+}
+
+/* //////////////////////// BUTTONS //////////////////////////////// */
+/* //////////////////////// BUTTONS //////////////////////////////// */
+/* //////////////////////// BUTTONS //////////////////////////////// */
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+button {
+    overflow: visible;
+    background-color: #FFFFFF;
+    border: 1px solid #ddd;
+    padding: 5px 20px;
+    margin: 15px 0px 20px 0px;
+}
+
+button:focus {outline:0;}
+
+.full_width_btn {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 0px;
+    border: 0px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    display: none;
+}
+
+button, input {
+    overflow: visible;
+}
+
+/* hide the default file input style so i can create custom-file-upload style */
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+/* //////////////////// FONT HANDLERS ////////////////////////////// */
+/* //////////////////// FONT HANDLERS ////////////////////////////// */
+/* //////////////////// FONT HANDLERS ////////////////////////////// */
+
+.h1, .h2, .h3, .h4, h1, h2, h3, h4 {
+    font-family: "futura-pt", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 35px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0px;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+
+/* /////////////////// MAIN CONTENT AREA /////////////////////////// */
+/* /////////////////// MAIN CONTENT AREA /////////////////////////// */
+/* /////////////////// MAIN CONTENT AREA /////////////////////////// */
+
+/* originally #content */
+.container_outerContent {
+    padding-top: 3.5rem;
+    min-height: 100%;
+    padding-bottom: 2rem;
+    color: #040404;
+}
+
+/* originally #small_content */
+.container_innerContent {
+    max-width: 1000px;
+    bottom: 0;
+    position: relative;
+    background-color: #FFFFFF;
+    z-index: 100;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    padding-top: 100px;
+    height: 100%; 
+    display: flow-root;
+}
+
+/* ///////////////// NAVIGATION HEADER & FOOTER //////////////////// */
+/* ///////////////// NAVIGATION HEADER & FOOTER //////////////////// */
+/* ///////////////// NAVIGATION HEADER & FOOTER //////////////////// */
+
+.mobile_logo {
+    visibility: hidden;
+    display: none;
+    text-align: center;
+}
+
+.logo {
+    font-family: "futura-pt", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    float: left;
+    height: 60px;
+    padding-left: 15px;
+}
+
+/* neccessary or the style for h1 will override this */
+.logo > h1 {
+    font-family: "futura-pt", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.mobile_logo > h1, .logo > h1 {
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0px;
+    font-weight: 300;
+}
+
+.logo:hover {
+    text-shadow: 2px 2px 4px #afafaf;
+}
+
+.mobile_nav {
+    visibility: hidden;
+    display: none;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: white;
+    border-bottom: 1px solid #e1e1e6;
+    z-index: 700;
+    color: #040404;
+}
+
+.copyright {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    border-top: solid 1px #d2d7dc;
+    color: #040404;
+    padding-top: 1em;
+    background: #F9F9F9;
+    padding-bottom: 2rem;
+    float: left;
+    width: 100%;
+}
+
+.header_bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 70px;
+    background: white;
+    z-index: 700;
+    color: #040404;;
+    visibility: visible;
+    display: block;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+/* thick gray bar at the bottom of the header navigation */
+.nav_desktop_grayBar {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 70px;
+    height: 2rem;
+    background: #F5F5F5;
+    border-bottom: 1px solid #e1e1e6;
+    z-index: 600;
+    webkit-box-shadow: 0px 4px 5px 0px #ECECEC;
+    -moz-box-shadow: 0px 4px 5px 0px #ECECEC;
+    box-shadow: 0px 4px 5px 0px #ECECEC;
+    visibility: visible;
+    display: block;
+}
+
+.nav {
+    text-align: right;
+    max-width: 1040px;
+    line-height: 4em;
+    margin: auto;
+}
+
+.nav > ul > li:first-child {
+    margin-left: 0;
+}
+
+.nav > ul > li {
+    display: inline-block;
+    margin-left: 0.5em;
+}
+
+.nav > ul {
+    margin: 0;
+}
+
+/* icons next to head navigation in desktop mode */
+.nav > ul > li > a > i {
+    padding-right: 10px;
+}
+
+.nav > ul > li > a > i:hover {
+    text-shadow: 2px 2px 4px #afafaf;
+}
+
+.mobile_nav_bar {
+    text-align: center;
+    position: relative;
+    left: 0;
+    right: 0;
+    height: 2em;
+    background: #F5F5F5;
+    border-top: 1px solid #e1e1e6;
+    z-index: 600;
+    width: 100%;
+    visibility: hidden;
+    display: none;
+}
+
+.nav > ul > li > span, .nav > ul > li > a, .mobile_nav_bar > a {
+    color: #040404;
+    text-decoration: none;
+    outline: 0;
+    border: 0;
+    border: solid 1px rgba(255,255,255,0);
+    border-radius: 0.35em;
+    padding: 0.3em 1em 0.3em 1em;
+    -moz-transition: border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+    -webkit-transition: border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+    -o-transition: border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+    -ms-transition: border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+    transition: border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+}
+
+.nav > ul > li > a:hover {
+    text-shadow: 2px 2px 4px #afafaf;
+}
+
+.mobile_nav_bar > a {
+    line-height: 2;
+}
+
+/* //////////////////// VIDEO PAGE ///////////////////////////////// */
+/* //////////////////// VIDEO PAGE ///////////////////////////////// */
+/* //////////////////// VIDEO PAGE ///////////////////////////////// */
+
+/*used for link to video_details.php underneath videos in video.php*/
+.video_additionalInfo_link {
+    background-color: #3e3e3e;
+    color: #FFFFFF;
+    border: 3px solid #3e3e3e;
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+    float:left;
+}
+
+.video_additionalInfo_link:hover {
+    background-color: #696969;
+    color: #FFFFFF;
+    border: 3px solid #3e3e3e;
+}
+
+.video_additionalInfo_link > a {
+    color: #FFFFFF;
+}
+
+/* ////////////////// PHOTOGRAPHY PAGE ////////////////////////////// */
+/* ////////////////// PHOTOGRAPHY PAGE ////////////////////////////// */
+/* ////////////////// PHOTOGRAPHY PAGE ////////////////////////////// */
+
+.img_container {
+    position:relative;
+    float:left;
+    width:100%;
+}
+
+.img_resize {
+    position: relative; 
+    width:100%;
+}
+
+.img_link {
+    position: absolute;
+    bottom:0;
+}
+
+.photoset_links {
+    background-color: #3e3e3e;
+    color: #FFFFFF;
+    border: 3px solid #3e3e3e;
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    font-weight: 600;
+    float: left;
+    bottom: 0;
+}
+
+.column {
+    flex: 100%;
+    max-width: 50%;
+    padding: 0px 4px;
+    float: left;
+    width: 100%;
+    display: inline-table;
+}
+
+.column-full {
+    width: 100%;
+    flex: 100%;
+    max-width: 100% !important;
+    padding: 0px 4px;
+}
+
+/* used to toggle the width of photographs */
+.switch {
+    width:100%;
+}
+
+.switch:hover {
+    background-color: #F5F5F5;
+}
+
+.flex {
+    /*display: flex;*/
+    flex-wrap: wrap;
+}
+
+.flex img {
+    width:100%;
+}
+
+/* //////////////////// CONTACT PAGE /////////////////////////////// */
+/* //////////////////// CONTACT PAGE /////////////////////////////// */
+/* //////////////////// CONTACT PAGE /////////////////////////////// */
+
+.contact_container {
+    width: 100%;
+    display: flex;
+}
+
+.divide_small_content_r, .divide_small_content_l {
+    width: 49%;
+    float: left;
+    padding: 0px 0px 0px 30px;
+}
+
+.divide_small_content_r {
+    padding-right: 30px;
+}
+
+.divide_small_content_l {
+    padding-top: 10px;
+}
+
+.contact_container {
+    width: 100%;
+    display: flex;
+}
+
+.bio_justify {
+    text-align: justify; 
+    float:left;
+}
+
+.bio_headers {
+    text-align: left; 
+}
+
+.contact_form {
+    visibility: visible;
+    display: block;
+}
+
+.contact_form_mobile {
+    visibility: hidden;
+    display: none;
+}
+
+/* /////////////////// W3 MODIFICIATIONS /////////////////////////// */
+/* /////////////////// W3 MODIFICIATIONS /////////////////////////// */
+/* /////////////////// W3 MODIFICIATIONS /////////////////////////// */
+
+.w3-light-grey{
+    text-transform: uppercase;
+}
+
+.w3-bar {
+    padding-bottom: 10px;
+}
+
+.w3-container, .w3-panel {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.w3-center {
+    text-align: center!important;
+}
+
+.w3-sand, .w3-hover-sand:hover {
+    background-color: #FFFFFF !important;
+}
+
+.w3-container, .w3-panel {
+    padding: 0.01em 16px;
+}
+
+.w3-input{
+    margin-bottom: 20px;
+}
+
+.w3-table td, .w3-table th, .w3-table-all td, .w3-table-all th {
+    padding: 8px 8px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: top;
+}
+
+.w3-table th:first-child, .w3-table td:first-child, .w3-table-all th:first-child, .w3-table-all td:first-child {
+    padding-left: 16px;
+}
+
+.w3-border {
+    border: 1px solid #ccc!important;
+}
+
+.w3-input {
+    padding: 8px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+}
+
+.w3-light-grey, .w3-hover-light-grey:hover, .w3-light-gray, .w3-hover-light-gray:hover {
+    color: #000!important;
+    background-color: #f1f1f1!important;
+}
+
+.w3-bar .w3-button {
+    white-space: normal;
+}
+
+.w3-btn, .w3-button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.w3-table-all {
+    border: 1px solid #ccc;
+}
+
+.w3-bordered tr, .w3-table-all tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.w3-table, .w3-table-all {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    display: table;
+}
+
+/* ////////////////// MOBILE STYLES ////////////////////////////// */
+/* ////////////////// MOBILE STYLES ////////////////////////////// */
+/* ////////////////// MOBILE STYLES ////////////////////////////// */
+
+@media (max-width: 1071px) {
+    body {
+        background-color: #FFFFFF;
+        font-size: calc(14px + (19 - 15) * ((100vw - 300px) / (1600 - 300)));
+        line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
+    }
+
+   .header_bar, .nav_desktop_grayBar {
+        visibility: hidden;
+        display: none;
+    }
+
+    .nav {
+        text-align: center;
+    }
+
+    .mobile_logo, .mobile_nav, .mobile_nav_bar {
+        visibility: visible;
+        display: block;
+    }
+
+    .container_outerContent {
+    	padding-top: 0;
+    	min-height: 100%;
+    	padding-bottom: 2rem;
+    	color: #040404;
+    	position: relative;
+    }
+
+    .container_innerContent {
+        padding-top: 15px;
+        max-width: 100%;
+    }
+
+    /* contact page */
+    .divide_small_content_r, .divide_small_content_l {
+        width: 100%;
+        float: left;
+        padding: 20px 0px 0px 0px;
+    }
+
+    .divide_small_content_r {
+        margin-top: 25px;
+        padding-right: 0px;
+        width: 100%;
+        padding: 15px;
+        padding-top: 0;
+        margin-top:0;
+    }
+
+    .divide_small_content_l {
+    	position: relative;
+        width: 50%;
+        left: 25%;
+    }
+
+    .contact_container {
+        width: 100%;
+        display: block;
+    }
+
+    .bio_headers {
+        text-align: center; 
+        border-bottom: 1px dashed #737373;
+        padding: 0px 0px 10px 0px;
+    }
+
+    .contact_form {
+        visibility: hidden;
+        display: none;
+    }
+
+    .contact_form_mobile {
+        visibility: visible;
+        display: block;
+    }
+
+}
+
+@media (max-width: 750px) {
+
+    .column {
+    width: 100%;
+    flex: 100%;
+    max-width: 100%;
+    padding: 0 4px;
+    }
+
+}
+
+@media (max-width: 720px) {
+
+    .nav-tabs>li {
+        width: 100%;
+        background: #F5F5F5;
+        border: transparent;
+        margin: none;
+    }
+
+    .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+        border: transparent;
+        margin: none;
+    }
+
+    /* photo page */
+    .full_width_btn {
+        display: block;
+    }
+
+    button.switch {
+        display: none;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .divide_small_content_l {
+    	position: relative;
+        width: 100%;
+        left: 0%;
+    }
+}
+
