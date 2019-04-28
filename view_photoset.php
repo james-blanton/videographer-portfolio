@@ -15,7 +15,8 @@ include("blog/connect.php");
 
 <?php
 // Function to check that the id gathered from the url is valid. This function can be found in header.php.
-idCheck();
+$id = $_GET['id'];
+idCheck($id);
 
 // CHECK TO MAKE SURE THAT THE ID GATHERED FROM THE URL ACTUALLY EXISTS IN THE 'photo_sets' TABLE
 // object oriented style prepare statement to get the data related to the photoset from the database

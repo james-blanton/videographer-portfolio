@@ -11,7 +11,8 @@ include('header.php');
 include("blog/connect.php");
 
 // Function to check that the id gathered from the url is valid. This function can be found in header.php.
-idCheck();
+$id = $_GET['id'];
+idCheck($id);
 
 // Select statement to acquire all details related to the selected video
 $sql= "SELECT id, description, filename, fileextension FROM video WHERE id = $id";
