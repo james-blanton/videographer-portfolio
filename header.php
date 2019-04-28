@@ -36,20 +36,31 @@ FUNCTION getCurrentDirectory() {
 $current_location = getCurrentDirectory();
 
 // This function ensures that an ID entered in the url is truely numeric. It also typecasts the value for greater security.
-FUNCTION idCheck(){
+FUNCTION idCheck($id) {
     // set the id from the url to 1 if the user tries to view the page with no id being set
-    if(!isset($_GET['id'])){
+    if(!isset($id)){
         $id = 1;
-        $_GET['id'] = 1;
     }
 
     // Redirect user away if they put some strange id in the url bar
-    if(isset($_GET['id']) && is_numeric($_GET['id'])) {
-        $id = (INT) $_GET['id'];
+    if(isset($id) && is_numeric($id)) {
+        $id = (INT) $id;
     } else {
         Redirect('index', false);
         exit();
     }
+
+    return $id;
+}
+
+// Security check to make sure that admin is logged in. Included at the top of every backend CMS file.
+FUNCTION loginCheck() {
+    // if the user is not logged in, then redirect the user away to the login page before executing any more of this file
+    if(!isset($_SESSION['username'])) {
+        Redirect('login', false);
+        exit();
+    } 
+
 }
 
 session_start();

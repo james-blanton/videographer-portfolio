@@ -11,7 +11,8 @@ include("../header.php");
 include("connect.php");
 
 // Function to check that the id gathered from the url is valid. This function can be found in header.php.
-idCheck();
+$id = $_GET['id'];
+idCheck($id);
 
 // query statement to get the data related to the article the user is viewing from the database ... safe prepare statement
 $sql = "SELECT * FROM posts WHERE id = '$id'";

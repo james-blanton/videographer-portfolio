@@ -16,7 +16,8 @@ include("../header.php");
 echo '<a href="index"> << return to Articles Index</a><br/>';
 
 // Function to check that the id gathered from the url is valid. This function can be found in header.php.
-idCheck();
+$id = $_GET['id'];
+idCheck($id);
 
 /*
 If the user attempts to view a category id that does not exist in the database, 

@@ -7,7 +7,10 @@ If the user tries to access the logout file for some reason when they aren't eve
 
 /*------------------------------------------*/
 
-session_start();
+include("../header.php");
+
+// Function to ensure that the user is logged in as an admin. This function can be found in header.php.
+loginCheck();
 
 if(!isset($_SESSION['username'])) 
 {

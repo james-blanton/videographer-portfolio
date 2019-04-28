@@ -10,11 +10,8 @@ include("../header.php");
 // database connection file
 include("connect.php");
 
-// If the user is not logged in, then redirect the user away to the login page before executing any more of this file
-if(!isset($_SESSION['username'])) {
-	Redirect('login', false);
-	exit();
-} 
+// Function to ensure that the user is logged in as an admin. This function can be found in header.php.
+loginCheck();
 
 ?>
 

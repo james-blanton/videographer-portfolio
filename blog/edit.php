@@ -11,13 +11,11 @@ include("../header.php");
 include("connect.php");
 
 // Function to check that the id gathered from the url is valid. This function can be found in header.php.
-idCheck();
+$id = $_GET['id'];
+idCheck($id);
 
-// if the user is not logged in, then redirect the user away to the login page before executing any more of this file
-if(!isset($_SESSION['username'])) {
-	Redirect('login', false);
-	exit();
-} 
+// Function to ensure that the user is logged in as an admin. This function can be found in header.php.
+loginCheck();
 
 // redirect the user away if they try to access the edit.php page for a blog /article post id that doesnt exist in the database
 $sql = "SELECT * FROM posts WHERE id = '$id'";

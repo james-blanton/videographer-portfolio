@@ -11,13 +11,11 @@ include("../header.php");
 include("connect.php");
 
 // Function to check that the id gathered from the url is valid. This function can be found in header.php.
-idCheck();
+$id = $_GET['id'];
+idCheck($id);
 
-// if the user is not logged in, then redirect the user away to the login page before executing any more of this file
-if(!isset($_SESSION['username'])) {
-	Redirect('login', false);
-	exit();
-} 
+// Function to ensure that the user is logged in as an admin. This function can be found in header.php.
+loginCheck();
 
 // query statement to get a portion of the data related to the photograph from the database
 $sql = "SELECT * FROM video WHERE id = '$id'";

@@ -39,11 +39,8 @@ Prepare to enter a new row in to the PHOTO table.
 // database connection file
 include("connect.php");
 
-// if the user is not logged in, then redirect the user away to the login page before executing any more of this file
-if(!isset($_SESSION['username'])) {
-	header("location: login");
-	exit();
-}
+// Function to ensure that the user is logged in as an admin. This function can be found in header.php.
+loginCheck();
 		
 ?>
 
