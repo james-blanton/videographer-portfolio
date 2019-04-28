@@ -1,5 +1,3 @@
-<div class="w3-container w3-center w3-light-grey"><h3>Categories</div>
-
 <?php
 /*-------------------------------------------
 FILE PURPOSE
@@ -14,7 +12,11 @@ that I will want to add categories in the future that will not relate to photogr
 Currently I am truncating the description of the categories after 150 characters.
 
 /*------------------------------------------*/
+?>
 
+<div class="w3-container w3-center w3-light-grey"><h3>Categories</div>
+
+<?php
 // query all rows from the category table
 $sql = "SELECT * FROM category";
 // executes a prepared query and stores the result as a result set or FALSE

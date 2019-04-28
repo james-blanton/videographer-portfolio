@@ -10,20 +10,14 @@ include('header.php');
 // database connection file
 include("blog/connect.php");
 
-// typecast video id
-// Redirect user away if they put some strange id in the url bar
-if(isset($_GET['id']) && is_numeric($_GET['id'])) {
-	$id = (INT) $_GET['id'];
-} else {
-	Redirect('index', false);
-	exit();
-}
+// Function to check that the id gathered from the url is valid. This function can be found in header.php.
+idCheck();
 
-// select statement to acquire all details related to the selected video
+// Select statement to acquire all details related to the selected video
 $sql= "SELECT id, description, filename, fileextension FROM video WHERE id = $id";
 $result = $dbcon->query($sql);
 
-// redirect the user away if they try and view video_details for a video id that does not exist in the database
+// Redirect the user away if they try and view video_details for a video id that does not exist in the database
 $num_rows = mysqli_num_rows($result);
 if($num_rows == 0){
 	Redirect('video', false);

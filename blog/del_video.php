@@ -20,25 +20,14 @@ include("../header.php");
 // database connection file
 include("connect.php");
 
+// Function to check that the id gathered from the url is valid. This function can be found in header.php.
+idCheck();
+
 // if the user is not logged in, then redirect the user away to the index page before executing any more of this file
 if(!isset($_SESSION['username'])) {
 	Redirect('index', false);
 	exit();
 } 
-
-// typecast video id
-// Redirect user away if they put some strange id in the url bar
-if($_GET['id']  == ''){
-	Redirect('index', false);
-	exit();
-}
-
-if(isset($_GET['id']) && is_numeric($_GET['id'])) {
-	$id = (INT)$_GET['id'];
-} else {
-	Redirect('index', false);
-	exit();
-}
 
 // check if the video ID has been recieved from the url or not
 // if the url has been recieved, then perform the delete

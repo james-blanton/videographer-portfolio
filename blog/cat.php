@@ -15,29 +15,12 @@ include("../header.php");
 
 echo '<a href="index"> << return to Articles Index</a><br/>';
 
-// get the id of the category from the url
-// typecast category id
-// Redirect user away if they put some strange id in the url bar
-if($_GET['id']  == ''){
-	Redirect('index', false);
-	exit();
-}
-
-if(isset($_GET['id']) && is_numeric($_GET['id'])) {
-	$id = (INT)$_GET['id'];
-} else {
-	Redirect('index', false);
-	exit();
-}
-
-// if the user tries to enter a strange category id, then redirect them away from the file 
-if($id < 1) {
-	Redirect('index', false);
-	exit();
-} 
+// Function to check that the id gathered from the url is valid. This function can be found in header.php.
+idCheck();
 
 /*
-If the user attempts to view a category id that does not exist in the database, then redirect them away from this file. This select query will also be used to display the category name at the top of page
+If the user attempts to view a category id that does not exist in the database, 
+then redirect them away from this file. This select query will also be used to display the category name at the top of page
 */
 $sql = "SELECT * FROM category WHERE id = '$id'";
 // executes a prepared query and stores the result as TRUE or FALSE

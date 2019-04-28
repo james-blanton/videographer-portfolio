@@ -3,6 +3,7 @@
 FILE PURPOSE
 
 This file is found via the admin dashboard. In short, this is used to edit existing photographs. All of the content edited in this file is related to the "photo" & "photo_sets" table.
+
 Read the notes carefully in order to get a thorough understanding of why I reset the cover_photo column in the 'photo_sets' table every time the form on this page is submitted. 
 
 /*------------------------------------------*/
@@ -11,24 +12,14 @@ include("../header.php");
 // database connection file
 include("connect.php");
 
+// Function to check that the id gathered from the url is valid. This function can be found in header.php.
+idCheck();
+
 // if the user is not logged in, then redirect the user away to the login page before executing any more of this file
 if(!isset($_SESSION['username'])) {
 	Redirect('login', false);
 	exit();
 } 
-
-// if the user attempts to access the edit page for a fake / unrealistic photo id, then direct them away from this file. Typecast the id gathered from the url to an integer for security purposes
-if(!isset($_GET['id'])){
-	$id = 1;
-	$_GET['id'] = 1;
-}
-
-if(isset($_GET['id']) && is_numeric($_GET['id'])) {
-	$id = (INT)$_GET['id'];
-} else {
-	Redirect('index', false);
-	exit();
-}
 
 // object oriented style prepare statement to get the data related to the photograph from the database
 $stmt = $dbcon->prepare("SELECT id,title,category,filedate,name,display_hide,photoset_ID FROM photo WHERE id = ?");

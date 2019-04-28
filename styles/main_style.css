@@ -411,6 +411,11 @@ h2 {
 /* ////////////////// PHOTOGRAPHY PAGE ////////////////////////////// */
 /* ////////////////// PHOTOGRAPHY PAGE ////////////////////////////// */
 
+.float_fullHeight {
+    height:100%; 
+    float:left;
+}
+
 .img_container {
     position:relative;
     float:left;

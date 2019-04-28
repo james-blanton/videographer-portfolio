@@ -10,18 +10,8 @@ include("../header.php");
 // database connection file
 include("connect.php");
 
-// If the user attempts to access the edit page for a fake / unrealistic blog post / article id, then direct them away from this file. Typecast the id gathered from the url to an integer for security purposes
-if(!isset($_GET['id'])){
-	$id = 1;
-	$_GET['id'] = 1;
-}
-
-if(isset($_GET['id']) && is_numeric($_GET['id'])) {
-	$id = (INT)$_GET['id'];
-} else {
-	Redirect('index', false);
-	exit();
-}
+// Function to check that the id gathered from the url is valid. This function can be found in header.php.
+idCheck();
 
 // query statement to get the data related to the article the user is viewing from the database ... safe prepare statement
 $sql = "SELECT * FROM posts WHERE id = '$id'";

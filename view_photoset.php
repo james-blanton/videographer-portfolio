@@ -14,19 +14,8 @@ include("blog/connect.php");
 ?>
 
 <?php
-// set the id of the photoset to 1 if the user tries to view the page with no photo_set id already being set
-if(!isset($_GET['id'])){
-  $id = 1;
-  $_GET['id'] = 1;
-}
-
-// make sure the ID is a true integersssssssssssss 
-if(isset($_GET['id']) && is_numeric($_GET['id'])) {
-  $id = (INT)$_GET['id'];
-} else {
-  Redirect('index', false);
-  exit();
-}
+// Function to check that the id gathered from the url is valid. This function can be found in header.php.
+idCheck();
 
 // CHECK TO MAKE SURE THAT THE ID GATHERED FROM THE URL ACTUALLY EXISTS IN THE 'photo_sets' TABLE
 // object oriented style prepare statement to get the data related to the photoset from the database

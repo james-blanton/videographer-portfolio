@@ -20,7 +20,7 @@ I've left the old urls without the if else statement in this file in order to ma
 /*------------------------------------------*/
 
 // global redirect function 
-function Redirect($url, $permanent = false)
+FUNCTION Redirect($url, $permanent = false)
 {
     header('Location: ' . $url, true, $permanent ? 301 : 302);
     exit();
@@ -34,6 +34,23 @@ FUNCTION getCurrentDirectory() {
 }
 
 $current_location = getCurrentDirectory();
+
+// This function ensures that an ID entered in the url is truely numeric. It also typecasts the value for greater security.
+FUNCTION idCheck(){
+    // set the id from the url to 1 if the user tries to view the page with no id being set
+    if(!isset($_GET['id'])){
+        $id = 1;
+        $_GET['id'] = 1;
+    }
+
+    // Redirect user away if they put some strange id in the url bar
+    if(isset($_GET['id']) && is_numeric($_GET['id'])) {
+        $id = (INT) $_GET['id'];
+    } else {
+        Redirect('index', false);
+        exit();
+    }
+}
 
 session_start();
 ?>

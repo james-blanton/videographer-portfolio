@@ -19,7 +19,7 @@ include('header.php');
 
 <button class = "full_width_btn" onclick="fullWidthFunction()">MENU</button>
 
-<div id="photography_menu" style="display: block;">
+<div id="photography_menu">
 
  <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">ALL</a></li>

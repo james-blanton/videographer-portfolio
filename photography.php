@@ -22,49 +22,32 @@ include('header.php');
 
 <button class = "full_width_btn" onclick="fullWidthFunction()">MENU</button>
 
-<div id="photography_menu" style="display: block;">
+<div id="photography_menu">
 
  <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">PORTRAIT</a></li>
     <li><a data-toggle="tab" href="#menu1">LANDSCAPE</a></li>
     <li><a data-toggle="tab" href="#menu2">COMMERCIAL</a></li>
-    <!--
-    <li><a data-toggle="tab" href="#menu3">CATEGORY 4</a></li>
-    <li><a data-toggle="tab" href="#menu4">CATEGORY 5</a></li>
-    -->
-
   </ul>
   </div>
 
 
   <div class="tab-content">
 
-    <div id="home" class="tab-pane fade in active" style="height:100%; float:left;">
+    <div id="home" class="tab-pane fade in active" class="float_fullHeight">
       <h3>PORTRAIT</h3>
       <?php include('display_portrait.php'); ?>
     </div>
 
-    <div id="menu1" class="tab-pane fade" style="height:100%; float:left;">
+    <div id="menu1" class="tab-pane fade" class="float_fullHeight">
       <h3>LANDSCAPE</h3> 
       <?php include('display_landscape.php'); ?>
     </div>
 
-    <div id="menu2" class="tab-pane fade" style="height:100%; float:left;">
+    <div id="menu2" class="tab-pane fade" class="float_fullHeight">
       <h3>COMMERCIAL</h3>
       <?php include('display_commercial.php'); ?>
     </div>
-
-    <!--
-    <div id="menu3" class="tab-pane fade" style="height:100%; float:left;">
-      <h3>CATEGORY 4</h3>
-      test category 4
-    </div>
-
-    <div id="menu4" class="tab-pane fade" style="height:100%; float:left;">
-      <h3>CATEGORY 5</h3>
-      test category 5
-    </div>
-    -->
 
   </div>
 
