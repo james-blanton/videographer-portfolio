@@ -12,6 +12,10 @@ determines the current directory is located in the footer, which is attached at 
 
 ?>
 
+</div> <!-- end container_innerContent -->
+
+</div> <!-- end container_outerContent -->
+
 <div class="copyright">
 <ul class="menu">
 <li>© James Blanton. All rights reserved.</li>
