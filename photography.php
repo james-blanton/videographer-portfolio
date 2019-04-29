@@ -36,17 +36,17 @@ include('header.php');
 
     <div id="home" class="tab-pane fade in active" class="float_fullHeight">
       <h3>PORTRAIT</h3>
-      <?php include('display_portrait.php'); ?>
+      <?php $type = 'portrait'; display_photographs($type); ?>
     </div>
 
     <div id="menu1" class="tab-pane fade" class="float_fullHeight">
       <h3>LANDSCAPE</h3> 
-      <?php include('display_landscape.php'); ?>
+      <?php $type = 'landscape'; display_photographs($type); ?>
     </div>
 
     <div id="menu2" class="tab-pane fade" class="float_fullHeight">
       <h3>COMMERCIAL</h3>
-      <?php include('display_commercial.php'); ?>
+      <?php $type = 'commercial'; display_photographs($type); ?>
     </div>
 
   </div>

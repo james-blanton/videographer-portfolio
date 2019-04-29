@@ -19,6 +19,8 @@ I've left the old urls without the if else statement in this file in order to ma
 
 /*------------------------------------------*/
 
+include('functions.php');
+
 // global redirect function 
 FUNCTION Redirect($url, $permanent = false)
 {

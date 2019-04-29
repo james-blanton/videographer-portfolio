@@ -45,43 +45,43 @@ include('header.php');
 
     <div id="menu1" class="tab-pane fade">
       <h3>MOTION GRAPHICS</h3> 
-      <?php include('displayv_motion_graphic.php'); ?>
+      <?php $type = 'Motion Graphics'; display_video($type); ?>
     </div>
 
     <div id="menu2" class="tab-pane fade">
       <h3>PORTRAIT</h3>
       Coming soon ...
-      <?php include('displayv_portrait.php'); ?>
+      <?php $type = 'Portrait'; display_video($type); ?>
     </div>
 
     <div id="menu3" class="tab-pane fade">
       <h3>LANDSCAPE</h3>
       Coming soon ...
-      <?php include('displayv_landscape.php'); ?>  
+      <?php $type = 'Landscape'; display_video($type); ?> 
     </div>
 
     <div id="menu4" class="tab-pane fade">
       <h3>COMMERCIAL</h3>
       Coming soon ...
-      <?php include('displayv_commercial.php'); ?>   
+      <?php $type = 'Landscape'; display_video($type); ?> 
     </div>
 
     <div id="menu5" class="tab-pane fade">
       <h3>TRAVEL</h3>
       Coming soon ...
-      <?php include('displayv_travel.php'); ?>   
+      <?php $type = 'Travel'; display_video($type); ?>
     </div>
 
     <div id="menu6" class="tab-pane fade">
       <h3>WEDDINGS</h3>
       Coming soon ...
-      <?php include('displayv_weddings.php'); ?>   
+      <?php $type = 'Weddings'; display_video($type); ?>  
     </div>
 
     <div id="menu7" class="tab-pane fade">
       <h3>EDITORIAL</h3>
       Coming soon ...
-      <?php include('displayv_editorial.php'); ?>   
+      <?php $type = 'Editorial'; display_video($type); ?> 
     </div>
 
   </div>
