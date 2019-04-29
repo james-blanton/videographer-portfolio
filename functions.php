@@ -4,9 +4,12 @@ FUNCTION display_photoset($type) {
 /*-------------------------------------------
 FILE PURPOSE
 
-This file is included at the top of the display_$type.php file above all of the photographs that don't belong to a photoset.
-<div class='column'> needs to be displayed inside the loop. If this div is displayed outside the loop when there's no images inside it, 
-then it will mess up the spacing of all the images on the page.
+This function is used within the display_photographs() function to call all photo collections (rows in the 'photo_sets' table) that belong to a specific category. 
+The display_photographs() function is called within photographs.php 
+
+A category name is passed in to display_photographs() function and subsequently in to this function through the use of the $type arguement.
+
+The 'display_hide' field in the datbase is a boolean. If the display_hide row is set to '1' instead of zero for a specific photoset row, then that photoset / collection will not be displayed.
 
 /*------------------------------------------*/
 
@@ -60,23 +63,16 @@ if ($num_rows > 0){
 FUNCTION display_photographs($type) {
 	/*-------------------------------------------
 	FILE PURPOSE
-	
 
-	This file is included in the photography.php file.
-	If the user clicks on the "$type" tab while on photography.php, then this file will be displayed on the page.
-	This particular tab will display all of the photographs that have been entered in to the database with the category of "$type"
-	$type photo sets are displays before all photographs that do not belong to a set through the use of the display_$type_photosets.php file.
+	This function is included in the photography.php file under each category tab.
+	Each call to the function will display all of the photographs that have been entered in to the database with a specific category classification. The title of this requested category is passed to the function through the $type paramenter. For example, to call all photographs that have a category of 'portrait' you do the following:
 
-	The 'display_hide' field in the datbase is a boolean. If the display_hide row is set to '1' instead of zero for a specific photo row, then that photograph will not be displayed when the user is viewing this tab on the photography.php page
+	$type = 'portrait'; 
+	display_photographs($type); 
 
-	DATA QUERIED FOR THIS FILE:
+	-------------------------------------------
 
-	id = unique id / primary key ... datatype int(255)
-	title = the title of the photograph  .... datatype varchar(255)
-	category = the category to which each photographh belongs ... datatype varchar(255)
-	filedate = the date that the photograph was submitted to the database ... datatype date
-	name = the file name with the extension ... datatype varchar(255)
-	display_hide = sets if the video is hidden from public display  tinyint(1) ... AKA a boolean value
+	The 'display_hide' field in the datbase is a boolean. If the display_hide row is set to '1' instead of zero for a specific photo row, then that photograph will not be displayed.
 
 	/*------------------------------------------*/
 
@@ -89,15 +85,17 @@ FUNCTION display_photographs($type) {
 	<?php display_photoset($type); ?>
 
 	<?php
-	// Select statement to get all of the data on every $type photograph in the database that does not have a a boolean flag for display_hide set to 1. Photographs that belong to a photo set will not be individually displayed in the "$type" tab with the exception of the 'cover photo', which will link to the other photographs belong to that set.
+	// Select statement to get all of the data on every photograph matching the category name that was passed in to the function as a parameter.
+	// Photographs that have their 'display_hide' column set to 1 will not be displayed. 
+	// Photographs that belong to a photo set will be displayed by the above function call of display_photoset($type)
 	$sql= "SELECT id, title, name, filedate, display_hide, photoset_ID FROM photo WHERE category = '$type' AND display_hide = 0 AND photoset_ID IS NULL ORDER BY id";
 	$result = $dbcon->query($sql);
 
-	// store all data on each $type photograph in variables that are easier to use
+	// store all data on each photograph in variables that are easier to use
 	while($row = $result->fetch_assoc()) {
-	$id = $row['id']; // the unique id / primary key for the $type photograph
-	$title= $row['title']; // the title for each $type photograph
-	$filename= $row['name']; // the file name for each $type photograph including the file extension
+	$id = $row['id']; // the unique id / primary key for the photograph
+	$title= $row['title']; // the title for each photograph
+	$filename= $row['name']; // the file name for each photograph including the file extension
 
 	?>
 
@@ -123,30 +121,20 @@ FUNCTION display_video($type) {
 /*-------------------------------------------
 FILE PURPOSE
 
-This file is included in the video.php file.
-If the user clicks on the "$type" tab while on video.php, then this file will be displayed on the page.
-This particular tab will display all of the videos that have been entered in to the database with the category of "$type"
+This function is included in the video.php file under each category tab. Each call to the function will display all of the videos that have been entered in to the database with a specific category classification. The title of this requested category is passed to the function through the $type paramenter. For example, to call all photographs that have a category of 'portrait' you do the following:
 
-The 'display_hide' field in the datbase is a boolean. If the display_hide row is set to '1' instead of zero for a specific video row, then that video will not be displayed when the user is viewing this tab or the tab for the category that the video belongs to.
+$type = 'portrait'; 
+display_photographs($type); 
+
+-------------------------------------------
+
+The 'display_hide' field in the datbase is a boolean. If the display_hide row is set to '1' instead of zero for a specific photo row, then that photograph will not be displayed.
 
 The $descriptionvalue variable AKA the 'description' row for each video corresponds to a summary that has been submitted to give a brief descripton of the video. 
 When the user clicks on the 'View Additional Project Information' url they are taken to the 'video_details.php' page, which will display a full list of details on the video project, such as more detailed description of the video.
 The more  detailed description of each video is being stored in the 'vid_details' table, while all of the brief overview information of the video is being stored in the 'video' table that's being used in this file.
 
 The nl2br() function is used on the video description (the summary) in order to make the data  display with line breaks.
-
-DATA QUERIED FOR THIS FILE:
-
-id = unique id / primary key ... datatype int(11)
-description = a summary of the video  .... datatype text
-filename = the file name with the extension ... datatype varchar(50)
-fileextension = the stand alone file extension, such as 'mp4' ... datatype varchar(4)
-display_hide = sets if the video is hidden from public display ... datatype tinyint(1) ... AKA a boolean value
-
-DATA UNREQUIRED FOR THIS FILE:
-index_id = sets if the video displays on the index page of the portfolio or not ... tinyint(1) ... AKA a boolean value
-submit_date = the date that the video was submitted to the database ... datatype date
-category = the category to which each video belongs ... datatype varchar(255)
 
 /*------------------------------------------*/
 

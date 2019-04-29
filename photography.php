@@ -3,18 +3,16 @@
 FILE PURPOSE
 
 This file displays tabs for each video category. 
-Each category tab includes a seperate file that queries the database to display the videos that belong to that specific category.
+
+Each category tab includes a function that queries the database to display the videos which belong to that specific category. Check functions.php if you wish to edit how the photographs are displayed. 
 
 The javascript function at the end of this file toggles the width of photo to display at 100% the width of its parent container div. 
-
-Currently I have two placeholder categories in place in prediction of adding more categories soon.
 
 /*------------------------------------------*/
 
 include('header.php'); 
 
 ?>
-
 
 <link rel="stylesheet" href="styles/photo_styles.css">
 

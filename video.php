@@ -2,10 +2,9 @@
 /*-------------------------------------------
 FILE PURPOSE
 
-This file displays tabs for each video category. 
-Each category tab includes a seperate file that queries the database to display the videos that belong to that specific category.
+This file displays tabs for each video category.
 
-The javascript function at the end of this file toggles the width of video to display at 100% the width of its parent container div. Currently this javascript is unneccessary because I have the width of all videos on the portfolio set to 100%. However, I may change this behavior in the future once I have more videos to submit to the portfolio.
+Each category tab includes a function that queries the database to display the videos which belong to that specific category. Check functions.php if you wish to edit how the videos are displayed. 
 
 Currently I have commented out the travel, weddings an editorial categories until I have appropriate content for these categories.
 
@@ -91,17 +90,5 @@ include('header.php');
         
 </div>
 </div>
-
-<!-- displays the image at the full width of the parent div,  can be toggled on and off --> 
-<script type="text/javascript">
-function fullWidthFunction() {
-  var x = document.getElementById("photography_menu");
-  if (x.style.display === "none") {
-     x.style.display = "block";
-  } else {
-   x.style.display = "none";
-  }
-}
-</script>
 
 <?php include('footer.php'); ?>
