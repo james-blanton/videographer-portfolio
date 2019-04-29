@@ -67,6 +67,7 @@ if(mysqli_num_rows($result) < 1) {
 <th>ID</th>
 <th>Title</th>
 <th>Category</th>
+<th>Photoset</th>
 <th>Action</th>
 </tr>
 
@@ -75,7 +76,9 @@ while ($row = mysqli_fetch_assoc($result)) {
 	$id = $row['id'];
 	$title = substr($row['title'], 0, 15).'&#32;...'; // sunstr() function truncates the titles of the videos if they're longer than 15 characters
     $filename = $row['name'];
-    $category = $row['category'];  
+    $category = $row['category']; 
+    $photoset_id = $row['photoset_ID'];
+    if($photoset_id==''){$photoset_id="none";}
 
      // close php tag for now so that it's easier to code the rest of the table rows
 	?>
@@ -85,6 +88,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 	<td><?php echo $id;?></td>
 	<td><a href="view?id=<?php echo $id;?>"><?php echo $title ;?></a></td>
 	<td><?php echo $category;?></td>
+	<td><?php echo $photoset_id;?></td>
 	<td>
 		<a href="edit_photo?id=<?php echo $id;?>">Edit</a> |
 		<a href="del_photo?id=<?php echo $id;?>" onclick="return confirm('Are you sure you want to delete this photo?')">Delete</a>

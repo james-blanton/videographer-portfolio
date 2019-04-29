@@ -71,6 +71,7 @@ if(mysqli_num_rows($result) < 1) {
 <tr class='w3-light-grey w3-hover-light-grey'>
 <th>ID</th>
 <th>Title</th>
+<th>Category</th>
 <th>Index</th>
 <th>Action</th>
 </tr>
@@ -80,6 +81,7 @@ if(mysqli_num_rows($result) < 1) {
 while ($row = mysqli_fetch_assoc($result)) {
 	$id = $row['id'];
 	$title = substr($row['title'], 0, 15).'&#32;...'; // sunstr() function truncates the titles of the videos if they're longer than 15 characters
+	$category = substr($row['category'], 0, 8).'&#32;...';
     $filename = $row['filename'];
     $index_vid = $row['index_vid'];  
 
@@ -90,6 +92,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 	<tr>
 	<td><?php echo $id;?></td>
 	<td><a href="view?id=<?php echo $id;?>"><?php echo $title ;?></a></td>
+	<td><?php echo $category;?></td>
 	<td><?php echo $index_vid;?></td>
 	<td>
 		<a href="edit_video?id=<?php echo $id;?>">Edit</a> |
