@@ -49,7 +49,7 @@ if(isset($_POST['submit'])) {
 		$display = mysqli_real_escape_string($dbcon, $_POST['display']);
 
 		// if no photoset is selected in the form, then set the photoset_ID variable row to NULL
-		if($_POST['photoset'] = "NULL"){$photoset_ID = NULL;}
+		if($_POST['photoset'] == "NULL"){$photoset_ID = NULL;}
 
 		// $_FILES is an associative array of items  that contains several pieces of 
 		$name= $_FILES['file']['name'];

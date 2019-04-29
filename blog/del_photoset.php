@@ -16,7 +16,7 @@ then delete the set (delete the photo_sets row) ...
 
 If the user selects to go with option A, then the photographs belonging to the set will have their display_hidden column set  to 1.
 
-CURRENTLY THIS FILE AUTOMATICALLY DELETES THE PHOTOSET AND EVERY IMAGE ASSOCIATED WITH IT.
+CURRENTLY THIS FILE AUTOMATICALLY DELETES THE PHOTOSET AND EVERY IMAGE ASSOCIATED WITH IT. There is a javascript yes / no check with the user before the deletion occurs.
 /*------------------------------------------*/
 
 include("../header.php");
@@ -70,15 +70,28 @@ if($numrows > 0) {
    	$stmt->bind_result($filename);
 
    	while ($stmt->fetch()) {
-			// delete the file itself
-			unlink('../photo/'.$filename);
+   			// if the admin selects to delete all photographs attached to the photo set, then this block will execute
+   			if ($_GET['p']==1){
+				// delete the file itself
+				unlink('../photo/'.$filename);
 
-			// object oriented style prepare statement ... query the entry in the database related to the video file 
-			$stmt = $dbcon->prepare("DELETE FROM photo WHERE photoset_ID = ?");
-			// binds variables to a prepared statement as parameters
-			$stmt->bind_param("i", $id);
-			// executes a prepared query and stores the result as TRUE or FALSE
-			$stmt->execute();
+				// object oriented style prepare statement ... query the entry in the database related to the video file 
+				$stmt = $dbcon->prepare("DELETE FROM photo WHERE photoset_ID = ?");
+				// binds variables to a prepared statement as parameters
+				$stmt->bind_param("i", $id);
+				// executes a prepared query and stores the result as TRUE or FALSE
+				$stmt->execute();
+			}
+
+			// if the admin selects to delete all photographs attached to the photo set, then this block will execute
+   			if ($_GET['p']==2){
+				// object oriented style prepare statement ... query the entry in the database related to the video file 
+				$stmt = $dbcon->prepare("UPDATE photo SET photoset_ID = NULL WHERE photoset_ID = ?");
+				// binds variables to a prepared statement as parameters
+				$stmt->bind_param("i", $id);
+				// executes a prepared query and stores the result as TRUE or FALSE
+				$stmt->execute();
+			}
 
 			// object oriented style prepare statement ... delete the details related to the video from the 'vid_details' table
 			$stmt = $dbcon->prepare("DELETE FROM photo_sets WHERE id = ?");

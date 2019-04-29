@@ -83,7 +83,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 	<td><?php echo $category;?></td>
 	<td>
 		<a href="edit_photoset?id=<?php echo $id;?>">Edit</a> |
-		<a href="del_photoset?id=<?php echo $id;?>" onclick="return confirm('Are you sure you want to delete this photoset and all photographs related to it?')">Delete</a> 
+		<a href="del_photoset?id=<?php echo $id;?>&p=1" onclick="return confirm('Are you sure you want to delete this photoset and all photographs related to it?')">Delete All</a> |
+		<a href="del_photoset?id=<?php echo $id;?>&p=2" onclick="return confirm('Are you sure you want to delete this photoset without deleting the content?')">Delete Collection Only</a> 
 	</td>
 	</tr>
 
