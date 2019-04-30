@@ -2,20 +2,25 @@
 /*-------------------------------------------
 FILE PURPOSE
 
-This file is included within the Admin Dashboard file (admin.php). It's for a tab that displays information relevant to photosets. It also provided a link to edit and delete photosets.
+This file is included within the Admin Dashboard file (admin.php).
+The file's purpose is to display a table which list of information in the database for every photographic image. 
+This data currently includes the unique ID (primary key), the title, the category and 2 links: edit, and delete.
+
+The titles of the photographs are truncated if they exceed 15 characters in total and an ellipse (...) is added to the end of the truncated title.
 
 /*------------------------------------------*/
 
-// Select statement that counts the total number of rows that exist in the 'photo_sets' table (photograph collections)
+// Select statement that counts the total number of rows that exist in the database table
 $sql = "SELECT COUNT(*) FROM photo_sets";
 // procedural style query on the database using the above select statement
 $result = mysqli_query($dbcon, $sql);
+//  fetches one row from a result-set and returns it as an enumerated array.
 $r = mysqli_fetch_row($result);
 
 // used for paginating the results returned from the query
 $numrows = $r[0]; // imagine that this returns a value of 10
 $rowsperpage = 5;
-$totalpages = ceil($numrows / $rowsperpage); // 10 + 5 = 2
+$totalpages = ceil($numrows / $rowsperpage); // 10 + 5 = 2 ... if 10 videos are listed in the database, then they will be displayed on 2 pages ... 5 videos per page
 
 if(!isset($_GET['page'])){
 	$page = 1;
@@ -32,7 +37,7 @@ if(isset($_GET['page']) && is_numeric($_GET['page'])) {
 	exit();
 }
 
-// adjust what photography data is being  displayed to the administrator in the html table based on where they are in the pagination navigation
+// adjust what data is being  displayed to the administrator in the html table based on where they are in the pagination navigation
 if(isset($_GET['page']) && is_numeric($_GET['page'])) {
 	$page = (INT)$_GET['page'];
 	} 

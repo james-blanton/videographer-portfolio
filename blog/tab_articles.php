@@ -3,21 +3,18 @@
 FILE PURPOSE
 
 This file is included within the Admin Dashboard file (admin.php).
-The file's purpose is to display a table which list of information in the database for every blog post / article / analytical writings that I put on my portfolio. 
-This data currently includes the unique ID (primary key), the title of the article, the date it was submitted, the number of views it has recieved and 2 links: edit, and delete.
+The file's purpose is to display a table which list of information in the database for every photographic image. 
+This data currently includes the unique ID (primary key), the title, the category and 2 links: edit, and delete.
 
-The titles of the article are truncated if they exceed 15 characters in total and an ellipse (...) is added to the end of the truncated title.
-
-The "edit" link takes the administrator user to edit.php, which allows them to edit the title, content, and category for the article.
+The titles of the photographs are truncated if they exceed 15 characters in total and an ellipse (...) is added to the end of the truncated title.
 
 /*------------------------------------------*/
 
-// The following PHP block is for pagination
-
-// Select statement that counts the total number of rows that exist in the 'posts' table, which contains all blog / article data
+// Select statement that counts the total number of rows that exist in the database table
 $sql = "SELECT COUNT(*) FROM posts";
 // procedural style query on the database using the above select statement
 $result = mysqli_query($dbcon, $sql);
+//  fetches one row from a result-set and returns it as an enumerated array.
 $r = mysqli_fetch_row($result);
 
 // used for paginating the results returned from the query
@@ -32,16 +29,15 @@ if(!isset($_GET['page'])){
 
 // the url would contain a $_GET['page'] value if the user has already navigated back and forth on the pagination navigation links. However, if the page is loaded without clicking on the pagination navigation links, then there will be no page value set in the url, therefor the user needs to be viewing the first page. Setting the $page variable to 1 ensures that this happenss
 
-// typecast page first for security
 // Redirect user away if they put some strange id in the url bar
 if(isset($_GET['page']) && is_numeric($_GET['page'])) {
 	$page = (INT)$_GET['page'];
 } else {
-	header("location: index");
+	Redirect('index', false);
 	exit();
 }
 
-// adjust what article / blog post data is being  displayed to the administrator in the html table based on where they are in the pagination navigation
+// adjust what data is being  displayed to the administrator in the html table based on where they are in the pagination navigation
 if(isset($_GET['page']) && is_numeric($_GET['page'])) {
 	$page = (INT)$_GET['page'];
 	} 
@@ -52,9 +48,7 @@ if(isset($_GET['page']) && is_numeric($_GET['page'])) {
 			$page = 1;
 			}
 			$offset = ($page - 1) * $rowsperpage;
-?>
 
-<?php
 // A select statement  to return a result-set of blog post / article data based on where the administrator is in the pagination navigation
 $sql = "SELECT * FROM posts ORDER BY id DESC LIMIT $offset, $rowsperpage";
 // executes a prepared query and stores the result as a result set or FALSE

@@ -3,21 +3,16 @@
 FILE PURPOSE
 
 This file is included within the Admin Dashboard file (admin.php).
-The file's purpose is to display a table which list of information in the database for every video. 
-This data currently includes the unique ID (primary key), the title of the video, the index value and 3 links: edit, details, and delete.
+The file's purpose is to display a table which list of information in the database for every photographic image. 
+This data currently includes the unique ID (primary key), the title, the category and 2 links: edit, and delete.
 
-The titles of the videos are truncated if they exceed 15 characters in total and an ellipse (...) is added to the end of the truncated title.
-
-The index value indicates whether video is displayed on the index page of the portfolio or not. A value of "1" represents a boolean true.
-If the index value is set to 1, then the video appears on the index page. If the value is set to 0, then the video only appears on the video.php section of the portfolio.
-
-The "edit" link takes the administrator user to edit_video.php, which allows them to edit the title, summary, category, index display and whether the video is hidden from public display on the portfolio or not. 
+The titles of the photographs are truncated if they exceed 15 characters in total and an ellipse (...) is added to the end of the truncated title.
 
 /*------------------------------------------*/
 
-// Select statement that counts the total number of rows that exist in the 'video' table
+// Select statement that counts the total number of rows that exist in the database table
 $sql = "SELECT COUNT(*) FROM video";
-// executes a procedural style query and stores the result as a result set or FALSE
+// procedural style query on the database using the above select statement
 $result = mysqli_query($dbcon, $sql);
 //  fetches one row from a result-set and returns it as an enumerated array.
 $r = mysqli_fetch_row($result);
@@ -34,16 +29,15 @@ if(!isset($_GET['page'])){
 
 // the url would contain a $_GET['page'] value if the user has already navigated back and forth on the pagination navigation links. However, if the page is loaded without clicking on the pagination navigation links, then there will be no page value set in the url, therefor the user needs to be viewing the first page. Setting the $page variable to 1 ensures that this happenss
 
-// typecast page first for security
 // Redirect user away if they put some strange id in the url bar
 if(isset($_GET['page']) && is_numeric($_GET['page'])) {
 	$page = (INT)$_GET['page'];
 } else {
-	header("location: index");
+	Redirect('index', false);
 	exit();
 }
 
-// adjust what video data is being  displayed to the administrator in the html table based on where they are in the pagination navigation
+// adjust what data is being  displayed to the administrator in the html table based on where they are in the pagination navigation
 if(isset($_GET['page']) && is_numeric($_GET['page'])) {
 	$page = (INT)$_GET['page'];
 	} 
