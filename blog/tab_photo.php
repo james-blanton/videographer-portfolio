@@ -66,7 +66,7 @@ if(mysqli_num_rows($result) < 1) {
 <th class="hide_th_td">ID</th>
 <th>Filename</th>
 <th>Category</th>
-<th>Photoset</th>
+<th>Set</th>
 <th>Action</th>
 </tr>
 
