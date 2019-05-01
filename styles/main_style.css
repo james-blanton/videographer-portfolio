@@ -120,6 +120,15 @@ hr {
     text-transform: uppercase;
 }
 
+.desktop_dropdown {
+    visibility: visible;
+    display:inline-block;
+}
+
+.mobile_dropdown {
+    visibility: hidden !important;
+    display: none !important;
+}
 /* ///////////////////////// INDEX ///////////////////////////////// */
 /* ///////////////////////// INDEX ///////////////////////////////// */
 /* ///////////////////////// INDEX ///////////////////////////////// */
@@ -526,6 +535,15 @@ h2 {
     display: none;
 }
 
+/* /////////////////// ADMIN AREA  /////////////////////////// */
+/* /////////////////// ADMIN AREA  /////////////////////////// */
+/* /////////////////// ADMIN AREA  /////////////////////////// */
+
+.hide_th_td {
+    visibility: visible;
+    display: inline-block;
+}
+
 /* /////////////////// W3 MODIFICIATIONS /////////////////////////// */
 /* /////////////////// W3 MODIFICIATIONS /////////////////////////// */
 /* /////////////////// W3 MODIFICIATIONS /////////////////////////// */
@@ -699,6 +717,27 @@ h2 {
         display: block;
     }
 
+    .desktop_dropdown {
+        visibility: hidden !important;
+        display: none !important;
+    }
+
+    /* admin dropdowns */
+    .mobile_dropdown {
+        visibility: visible  !important;
+        display: inline-block !important;
+        width: 100%;
+    }
+
+    .mobile_dropdown > select {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .hide_th_td {
+        visibility: hidden !important;
+        display: none !important;
+    }
 }
 
 @media (max-width: 750px) {

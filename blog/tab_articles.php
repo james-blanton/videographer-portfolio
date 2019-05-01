@@ -63,7 +63,7 @@ if(mysqli_num_rows($result) < 1) {
 <?php // the following are headers for the top of the table that will display all of the video information to the admin ?>
 <table class='w3-table-all'>
 <tr class='w3-light-grey w3-hover-light-grey'>
-<th>ID</th>
+<th class="hide_th_td">ID</th>
 <th>Title</th>
 <th>Date</th>
 <th>Views</th>
@@ -84,12 +84,20 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 	<?php // This table is still being displayed within the while loop. I'm placing this comment in php tags in order to hide it from being seen if the user decides to view the source code of the page.?>
 	<tr>
-	<td><?php echo $id;?></td>
+	<td class="hide_th_td"><?php echo $id;?></td>
 	<td><a href="view?id=<?php echo $id;?>"><?php echo $title ;?></a></td>
 	<td><?php echo $time;?></td>
 	<td><?php echo $hits;?></td>
 	<td><a href="edit?id=<?php echo $id;?>">Edit</a> | <a href="del?id=<?php echo $id;?>" onclick="return confirm('Are you sure you want to delete this post?')">Delete</a></td>
 	</tr>
+
+	<td class="mobile_dropdown">
+		<select id = "mobile_dropdown" onchange="window.location.href=this.value">
+			<option value="#">OPTIONS</option>
+		    <option value="edit?id=<?php echo $id;?>">Edit</option>
+		    <option value="del?id=<?php echo $id;?>">Delete</option>
+		</select>
+	</td>
 
 <?php 
 } 

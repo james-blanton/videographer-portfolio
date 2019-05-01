@@ -63,7 +63,7 @@ if(mysqli_num_rows($result) < 1) {
 <?php // the following are headers for the top of the table that will display all of the photo set information to the admin ?>
 <table class='w3-table-all'>
 <tr class='w3-light-grey w3-hover-light-grey'>
-<th>ID</th>
+<th class="hide_th_td">ID</th>
 <th>Title</th>
 <th>Category</th>
 <th>Action</th>
@@ -83,14 +83,25 @@ while ($row = mysqli_fetch_assoc($result)) {
 	// Currently I have not created the file for deleting photo sets
 	?>
 	<tr>
-	<td><?php echo $id;?></td>
+	<td class="hide_th_td"><?php echo $id;?></td>
 	<td><a href="view?id=<?php echo $id;?>"><?php echo $title ;?></a></td>
 	<td><?php echo $category;?></td>
-	<td>
+
+	<td class="desktop_dropdown">
 		<a href="edit_photoset?id=<?php echo $id;?>">Edit</a> |
 		<a href="del_photoset?id=<?php echo $id;?>&p=1" onclick="return confirm('Are you sure you want to delete this photoset and all photographs related to it?')">Delete All</a> |
 		<a href="del_photoset?id=<?php echo $id;?>&p=2" onclick="return confirm('Are you sure you want to delete this photoset without deleting the content?')">Delete Collection Only</a> 
 	</td>
+	
+	<td class="mobile_dropdown">
+		<select id = "mobile_dropdown" onchange="window.location.href=this.value">
+			<option value="#">OPTIONS</option>
+		    <option value="edit_photoset?id=<?php echo $id;?>">Edit</option>
+		    <option value="del_photoset?id=<?php echo $id;?>&p=1">Delete All</option>
+		    <option value="del_photoset?id=<?php echo $id;?>&p=2">Delete Collection Only</option>
+		</select>
+	</td>
+
 	</tr>
 
 	
