@@ -1,7 +1,74 @@
 <?php
+FUNCTION Redirect($url, $permanent = false) {
+	/*-------------------------------------------
+	FUNCTION PURPOSE
+
+	Global redirect function 
+
+	/*------------------------------------------*/
+    header('Location: ' . $url, true, $permanent ? 301 : 302);
+    exit();
+}
+
+FUNCTION getCurrentDirectory() {
+	/*-------------------------------------------
+	FUNCTION PURPOSE
+
+	This function returns the same of the current directory location for the file that is being viewed. 
+	The function is used to adjust the navigation urls and the paths to the CC files depending upon whether we are in the blog directory or not. 
+
+	/*------------------------------------------*/
+    $path = DIRNAME($_SERVER['PHP_SELF']);
+    $position = STRRPOS($path,'/') + 1;
+    RETURN SUBSTR($path,$position);
+}
+
+$current_location = getCurrentDirectory();
+
+FUNCTION idCheck($id) {
+	/*-------------------------------------------
+	FUNCTION PURPOSE
+
+	This function ensures that an ID entered in the url is truely numeric. It also typecasts the value for greater security.
+
+	/*------------------------------------------*/
+
+    // set the id from the url to 1 if the user tries to view the page with no id being set
+    if(!isset($id)){
+        $id = 1;
+    }
+
+    // Redirect user away if they put some strange id in the url bar
+    if(isset($id) && is_numeric($id)) {
+        $id = (INT) $id;
+    } else {
+        Redirect('index', false);
+        exit();
+    }
+
+    return $id;
+}
+
+FUNCTION loginCheck() {
+	/*-------------------------------------------
+	FUNCTION PURPOSE
+
+	Security check to make sure that admin is logged in. Included at the top of every backend CMS file.
+
+	/*------------------------------------------*/
+
+    // if the user is not logged in, then redirect the user away to the login page before executing any more of this file
+    if(!isset($_SESSION['username'])) {
+        Redirect('login', false);
+        exit();
+    } 
+
+}
+
+
 FUNCTION display_photoset($type) {
 	/*-------------------------------------------
-	FILE PURPOSE
+	FUNCTION PURPOSE
 
 	This function is used within the display_photographs() function to call all photo collections (rows in the 'photo_sets' table) that belong to a specific category. 
 	The display_photographs() function is called within photographs.php 
@@ -63,7 +130,7 @@ FUNCTION display_photoset($type) {
 <?php
 FUNCTION display_photographs($type) {
 	/*-------------------------------------------
-	FILE PURPOSE
+	FUNCTION PURPOSE
 
 	This function is included in the photography.php file under each category tab.
 	Each call to the function will display all of the photographs that have been entered in to the database with a specific category classification. The title of this requested category is passed to the function through the $type paramenter. For example, to call all photographs that have a category of 'portrait' you do the following:
@@ -120,7 +187,7 @@ FUNCTION display_photographs($type) {
 <?php
 FUNCTION display_video($type) {
 	/*-------------------------------------------
-	FILE PURPOSE
+	FUNCTION PURPOSE
 
 	This function is included in the video.php file under each category tab. Each call to the function will display all of the videos that have been entered in to the database with a specific category classification. The title of this requested category is passed to the function through the $type paramenter. For example, to call all photographs that have a category of 'portrait' you do the following:
 

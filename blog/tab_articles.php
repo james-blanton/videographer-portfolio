@@ -74,7 +74,7 @@ if(mysqli_num_rows($result) < 1) {
 // store the video information returned from the database query in variables
 while ($row = mysqli_fetch_assoc($result)) {
 	$id = $row['id'];
-	$title = substr($row['title'], 0, 15).'&#32;...'; // sunstr() function truncates the titles of the videos if they're longer than 15 characters
+	$title = substr($row['title'], 0, 10).'.'; // sunstr() function truncates the titles of the videos if they're longer than 15 characters
     $by = $row['posted_by'];
     $time = $row['date'];
     $time = date("m/d/y", strtotime($row['date'])); // formats the display of the datae as month / day / year
@@ -92,7 +92,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 	</tr>
 
 	<td class="mobile_dropdown">
-		<select id = "mobile_dropdown" onchange="window.location.href=this.value">
+		<select id = "mobile_dropdown" onchange="dropdownSelectionCheck(this)">
 			<option value="#">OPTIONS</option>
 		    <option value="edit?id=<?php echo $id;?>">Edit</option>
 		    <option value="del?id=<?php echo $id;?>">Delete</option>

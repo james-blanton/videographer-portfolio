@@ -73,9 +73,9 @@ if(mysqli_num_rows($result) < 1) {
 <?php
 while ($row = mysqli_fetch_assoc($result)) {
 	$id = $row['id'];
-	$title = substr($row['title'], 0, 15).'&#32;...'; // sunstr() function truncates the titles of the videos if they're longer than 15 characters
+	$title = substr($row['title'], 0, 10).'.'; // sunstr() function truncates the titles of the videos if they're longer than 15 characters
     $filename = $row['name'];
-    $category = $row['category']; 
+    $category = substr($row['category'], 0, 10).'.';; 
     $photoset_id = $row['photoset_ID'];
     if($photoset_id==''){$photoset_id="none";}
 
@@ -95,8 +95,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 	</td>
 
 	<td class="mobile_dropdown">
-		<select id = "mobile_dropdown" onchange="window.location.href=this.value">
-			<option value="#">OPTIONS</option>
+		<select id = "mobile_dropdown" onchange="dropdownSelectionCheck(this)">
+			<option name="selection" value="#">OPTIONS</option>
 		    <option value="edit_photo?id=<?php echo $id;?>">Edit</option>
 		    <option value="del_photo?id=<?php echo $id;?>">Delete</option>
 		</select>

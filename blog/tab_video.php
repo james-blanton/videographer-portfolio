@@ -74,8 +74,8 @@ if(mysqli_num_rows($result) < 1) {
 // store the video information returned from the database query in variables
 while ($row = mysqli_fetch_assoc($result)) {
 	$id = $row['id'];
-	$title = substr($row['title'], 0, 15).'&#32;...'; // sunstr() function truncates the titles of the videos if they're longer than 15 characters
-	$category = substr($row['category'], 0, 8).'&#32;...';
+	$title = substr($row['title'], 0, 10).'.'; // sunstr() function truncates the titles of the videos if they're longer than 15 characters
+	$category = substr($row['category'], 0, 10).'.';
     $filename = $row['filename'];
     $index_vid = $row['index_vid'];  
 
@@ -96,7 +96,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 	</td>
 	
 	<td class="mobile_dropdown">
-		<select id = "mobile_dropdown" onchange="window.location.href=this.value">
+		<select id = "mobile_dropdown" onchange="dropdownSelectionCheck(this)">
 			<option value="#">OPTIONS</option>
 		    <option value="edit_video?id=<?php echo $id;?>">Edit</option>
 		    <option value="video_details?id=<?php echo $id;?>">Details</option>

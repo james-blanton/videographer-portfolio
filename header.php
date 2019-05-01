@@ -21,50 +21,6 @@ I've left the old urls without the if else statement in this file in order to ma
 
 include('functions.php');
 
-// global redirect function 
-FUNCTION Redirect($url, $permanent = false)
-{
-    header('Location: ' . $url, true, $permanent ? 301 : 302);
-    exit();
-}
-
-// This function returns the same of the current directory location  for the file that is being viewed. This function is used to adjust the navigation urls and the paths to the CC files depending upon whether we are in the blog directory or not. 
-FUNCTION getCurrentDirectory() {
-    $path = DIRNAME($_SERVER['PHP_SELF']);
-    $position = STRRPOS($path,'/') + 1;
-    RETURN SUBSTR($path,$position);
-}
-
-$current_location = getCurrentDirectory();
-
-// This function ensures that an ID entered in the url is truely numeric. It also typecasts the value for greater security.
-FUNCTION idCheck($id) {
-    // set the id from the url to 1 if the user tries to view the page with no id being set
-    if(!isset($id)){
-        $id = 1;
-    }
-
-    // Redirect user away if they put some strange id in the url bar
-    if(isset($id) && is_numeric($id)) {
-        $id = (INT) $id;
-    } else {
-        Redirect('index', false);
-        exit();
-    }
-
-    return $id;
-}
-
-// Security check to make sure that admin is logged in. Included at the top of every backend CMS file.
-FUNCTION loginCheck() {
-    // if the user is not logged in, then redirect the user away to the login page before executing any more of this file
-    if(!isset($_SESSION['username'])) {
-        Redirect('login', false);
-        exit();
-    } 
-
-}
-
 session_start();
 ?>
 
@@ -108,6 +64,22 @@ else {
 echo
 '
 <link rel="stylesheet" type="text/css" href="styles/main_style.css">
+';
+}
+?>
+
+<?php
+if ($current_location == "blog")
+{
+echo 
+'
+<script src="../javascript_functions.js"></script>
+';
+}
+else {
+echo
+'
+<script src="javascript_functions.js"></script>
 ';
 }
 ?>

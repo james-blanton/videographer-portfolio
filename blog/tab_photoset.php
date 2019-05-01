@@ -72,8 +72,8 @@ if(mysqli_num_rows($result) < 1) {
 <?php
 while ($row = mysqli_fetch_assoc($result)) {
 	$id = $row['id'];
-	$title = substr($row['title'], 0, 15).'&#32;...'; // sunstr() function truncates the titles of the photo sets if they're longer than 15 characters
-    $category = $row['category'];  
+	$title = substr($row['title'], 0, 10).'.'; // sunstr() function truncates the titles of the photo sets if they're longer than 15 characters
+    $category = substr($row['category'], 0, 10).'.';;  
 
      // close php tag for now so that it's easier to code the rest of the table rows
 	?>
@@ -94,7 +94,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 	</td>
 	
 	<td class="mobile_dropdown">
-		<select id = "mobile_dropdown" onchange="window.location.href=this.value">
+		<select id = "mobile_dropdown" onchange="dropdownSelectionCheck(this)">
 			<option value="#">OPTIONS</option>
 		    <option value="edit_photoset?id=<?php echo $id;?>">Edit</option>
 		    <option value="del_photoset?id=<?php echo $id;?>&p=1">Delete All</option>
