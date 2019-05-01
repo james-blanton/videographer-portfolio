@@ -89,7 +89,7 @@ if(isset($_POST['submit'])) {
 <div class = "contact_container">
 
 <div class = "divide_small_content_l">
-	<img src="images/ct_portrait_placehold.jpg">
+	<img src="images/hocking.jpg">
 
 <br/><br/>
 

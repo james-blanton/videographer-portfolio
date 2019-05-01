@@ -64,7 +64,7 @@ if(mysqli_num_rows($result) < 1) {
 <table class='w3-table-all'>
 <tr class='w3-light-grey w3-hover-light-grey'>
 <th class="hide_th_td">ID</th>
-<th>Title</th>
+<th>Filename</th>
 <th>Category</th>
 <th>Photoset</th>
 <th>Action</th>
@@ -85,7 +85,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 	<?php // This table is still being displayed within the while loop. I'm placing this comment in php tags in order to hide it from being seen if the user decides to view the source code of the page.?>
 	<tr>
 	<td class="hide_th_td"><?php echo $id;?></td>
-	<td><a href="view?id=<?php echo $id;?>"><?php echo $title ;?></a></td>
+	<td><a href="view?id=<?php echo $id;?>"><?php echo $filename ;?></a></td>
 	<td><?php echo $category;?></td>
 	<td><?php echo $photoset_id;?></td>
 
