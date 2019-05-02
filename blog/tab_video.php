@@ -8,6 +8,9 @@ This data currently includes the unique ID (primary key), the title, the categor
 
 The titles of the photographs are truncated if they exceed 15 characters in total and an ellipse (...) is added to the end of the truncated title.
 
+Once the browser reaches 1071px the content modification links (edit, delete ect) are collapsed in to a dropdown menu. 
+I'm using javascript to redirect the user when these dropdown menu options are clicked through the use of window.location.href=url.value;
+See the dropdownSelectionCheck() function found in root/javascript_functions.js
 /*------------------------------------------*/
 
 // Select statement that counts the total number of rows that exist in the database table
@@ -97,7 +100,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 	
 	<td class="mobile_dropdown">
 		<select id = "mobile_dropdown" onchange="dropdownSelectionCheck(this)">
-			<option value="#">OPTIONS</option>
+			<option name="selection" value="#">&#xf013;</option>
 		    <option value="edit_video?id=<?php echo $id;?>">Edit</option>
 		    <option value="video_details?id=<?php echo $id;?>">Details</option>
 		    <option value="del_video?id=<?php echo $id;?>">Delete</option>

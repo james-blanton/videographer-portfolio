@@ -96,13 +96,14 @@ select {
     -moz-border-radius: 5px;
     background:#FBFBFB none repeat scroll 0 0;
     border:1px solid #E5E5E5;
-    font-size:12px;
+    font-size:15px;
     line-height: 16px;
     margin-bottom:16px;
     margin-right:6px;
     margin-top:2px;
     padding:10px;
     display: inline-block;
+    margin-bottom: 0;
 }
 
 input:focus { 
@@ -126,9 +127,23 @@ hr {
 }
 
 .mobile_dropdown {
+    font-family: fontAwesome;
+    border: none;
+    background-color: unset;
+    padding-right: none;
+    width: auto;
     visibility: hidden !important;
     display: none !important;
 }
+
+.mobile_dropdown > select {
+    font-family: fontAwesome;
+    border: none;
+    background-color: unset;
+    padding-right: none;
+    width: min-content;
+}
+
 /* ///////////////////////// INDEX ///////////////////////////////// */
 /* ///////////////////////// INDEX ///////////////////////////////// */
 /* ///////////////////////// INDEX ///////////////////////////////// */
@@ -726,12 +741,12 @@ h2 {
     .mobile_dropdown {
         visibility: visible  !important;
         display: inline-block !important;
-        width: 100%;
     }
 
     .mobile_dropdown > select {
         width: 100%;
         margin-bottom: 0;
+        padding: 0;
     }
 
     .hide_th_td {

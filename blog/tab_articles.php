@@ -8,6 +8,9 @@ This data currently includes the unique ID (primary key), the title, the categor
 
 The titles of the photographs are truncated if they exceed 15 characters in total and an ellipse (...) is added to the end of the truncated title.
 
+Once the browser reaches 1071px the content modification links (edit, delete ect) are collapsed in to a dropdown menu. 
+I'm using javascript to redirect the user when these dropdown menu options are clicked through the use of window.location.href=url.value;
+See the dropdownSelectionCheck() function found in root/javascript_functions.js
 /*------------------------------------------*/
 
 // Select statement that counts the total number of rows that exist in the database table
@@ -65,7 +68,7 @@ if(mysqli_num_rows($result) < 1) {
 <tr class='w3-light-grey w3-hover-light-grey'>
 <th class="hide_th_td">ID</th>
 <th>Title</th>
-<th>Date</th>
+<th class="hide_th_td">Date</th>
 <th>Views</th>
 <th>Action</th>
 </tr>
@@ -86,14 +89,14 @@ while ($row = mysqli_fetch_assoc($result)) {
 	<tr>
 	<td class="hide_th_td"><?php echo $id;?></td>
 	<td><a href="view?id=<?php echo $id;?>"><?php echo $title ;?></a></td>
-	<td><?php echo $time;?></td>
+	<td class="hide_th_td"><?php echo $time;?></td>
 	<td><?php echo $hits;?></td>
 	<td><a href="edit?id=<?php echo $id;?>">Edit</a> | <a href="del?id=<?php echo $id;?>" onclick="return confirm('Are you sure you want to delete this post?')">Delete</a></td>
 	</tr>
 
 	<td class="mobile_dropdown">
 		<select id = "mobile_dropdown" onchange="dropdownSelectionCheck(this)">
-			<option value="#">OPTIONS</option>
+			<option name="selection" value="#">&#xf013;</option>
 		    <option value="edit?id=<?php echo $id;?>">Edit</option>
 		    <option value="del?id=<?php echo $id;?>">Delete</option>
 		</select>

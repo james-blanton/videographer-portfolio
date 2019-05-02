@@ -91,4 +91,15 @@ include('header.php');
 </div>
 </div>
 
+<script type="text/javascript">
+  function fullWidthFunction() {
+  var x = document.getElementById("photography_menu");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
 <?php include('footer.php'); ?>
