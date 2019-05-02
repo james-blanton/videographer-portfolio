@@ -11,6 +11,11 @@ The titles of the photographs are truncated if they exceed 15 characters in tota
 Once the browser reaches 1071px the content modification links (edit, delete ect) are collapsed in to a dropdown menu. 
 I'm using javascript to redirect the user when these dropdown menu options are clicked through the use of window.location.href=url.value;
 See the dropdownSelectionCheck() function found in root/javascript_functions.js
+
+I hid the gear font-awesome icon with this simple css line due to the fact that font-awesome won't display correctly in dropdown options while on mobile:
+#mobile_dropdown > option:nth-child(1){
+    display: none;
+}
 /*------------------------------------------*/
 
 // Select statement that counts the total number of rows that exist in the database table
