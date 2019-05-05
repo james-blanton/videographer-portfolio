@@ -34,22 +34,30 @@ if(isset($_SESSION['username']) && isset($_SESSION['username']) != '') {
 	if ($current_location == "blog")
 	{
 		echo '<li><a href="admin"><i class="fas fa-user"></i></a>&nbsp; | 
-		&nbsp;<a href="../v6/index"><i class="fas fa-paint-brush"></i></a></li>';
+		&nbsp;<a href="../v6/index"><i class="fas fa-paint-brush"></i></a> |
+		&nbsp;<a href="https://github.com/james-blanton/videographer-portfolio"><i class="fab fa-github"></i></a></li>
+		';
 	}
 	else {
 		echo '<li><a href="blog/admin"><i class="fas fa-user"></i></a>&nbsp; | 
-		&nbsp;<a href="v6/index"><i class="fas fa-paint-brush"></i></a></li>';
+		&nbsp;<a href="v6/index"><i class="fas fa-paint-brush"></i></a>&nbsp; |
+		&nbsp;<a href="https://github.com/james-blanton/videographer-portfolio"><i class="fab fa-github"></i></a></li>
+		';
 	}
 }
 else {
 	if ($current_location == "blog")
 	{
 		echo '<li><a href="login"><i class="fas fa-sign-in-alt"></i></a>&nbsp; | 
-		&nbsp;<a href="../v6/index"><i class="fas fa-paint-brush"></i></a></li>';
+		&nbsp;<a href="../v6/index"><i class="fas fa-paint-brush"></i></a>&nbsp; |
+		&nbsp;<a href="https://github.com/james-blanton/videographer-portfolio"><i class="fab fa-github"></i></a></li>
+		';
 	}
 	else {
 		echo '<li><a href="blog/login"><i class="fas fa-sign-in-alt"></i></a>&nbsp; | 
-		&nbsp;<a href="v6/index"><i class="fas fa-paint-brush"></i></a></li>';
+		&nbsp;<a href="v6/index"><i class="fas fa-paint-brush"></i></a>&nbsp; |
+		&nbsp;<a href="https://github.com/james-blanton/videographer-portfolio"><i class="fab fa-github"></i></a></li>
+		';
 	}
 }
 
