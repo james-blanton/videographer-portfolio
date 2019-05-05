@@ -18,7 +18,7 @@ determines the current directory is located in the footer, which is attached at 
 
 <div class="copyright">
 <ul class="menu">
-<li>© James Blanton. All rights reserved.</li>
+<li>© 2019 James Blanton. All rights reserved.</li>
 
 <?php 
 /* 
@@ -33,19 +33,23 @@ to access this administration control panel.
 if(isset($_SESSION['username']) && isset($_SESSION['username']) != '') { 
 	if ($current_location == "blog")
 	{
-		echo '<li><a href="admin">Admin Panel</a></li>';
+		echo '<li><a href="admin"><i class="fas fa-user"></i></a>&nbsp; | 
+		&nbsp;<a href="../v6/index"><i class="fas fa-paint-brush"></i></a></li>';
 	}
 	else {
-		echo '<li><a href="blog/admin">Admin Panel</a></li>';
+		echo '<li><a href="blog/admin"><i class="fas fa-user"></i></a>&nbsp; | 
+		&nbsp;<a href="v6/index"><i class="fas fa-paint-brush"></i></a></li>';
 	}
 }
 else {
 	if ($current_location == "blog")
 	{
-		echo '<li><a href="login">Login</a></li>';
+		echo '<li><a href="login"><i class="fas fa-sign-in-alt"></i></a>&nbsp; | 
+		&nbsp;<a href="../v6/index"><i class="fas fa-paint-brush"></i></a></li>';
 	}
 	else {
-		echo '<li><a href="blog/login">Login</a></li>';
+		echo '<li><a href="blog/login"><i class="fas fa-sign-in-alt"></i></a>&nbsp; | 
+		&nbsp;<a href="v6/index"><i class="fas fa-paint-brush"></i></a></li>';
 	}
 }
 
